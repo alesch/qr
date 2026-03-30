@@ -1,0 +1,16 @@
+[project]
+name = "qr-generator"
+version = "0.1.0"
+description = "A professional QR code generator for SVG, EPS, and PNG"
+authors = [
+    { name = "Alex Schenkman", email = "alex@alexschenkman.info" }
+]
+dependencies = [
+    "qrcode[svg]>=7.4.2",
+    "cairosvg>=2.7.1",
+]
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

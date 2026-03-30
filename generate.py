@@ -2,6 +2,7 @@
 import os
 import sys
 
+import cairosvg
 import qrcode
 import qrcode.image.svg
 
@@ -18,15 +19,21 @@ qr.add_data("http://qr.schenkman.info/a")
 qr.make(fit=True)
 
 # Create the image with custom colors
-png_img = qr.make_image(fill_color="black", back_color="white")
+# png_img = qr.make_image(fill_color="black", back_color="white")
 svg_img = qr.make_image(
-    image_factory=qrcode.image.svg.SvgImage, fill_color="black", back_color="white"
+    image_factory=qrcode.image.svg.SvgPathFillImage,
+    fill_color="black",
+    back_color="white",
 )
 
-# Save the file
+# Save the files
 basename = os.path.splitext(sys.argv[1])[0] if len(sys.argv) > 1 else "qr"
-with open(basename + ".png", "wb") as f:
-    png_img.save(f)
+# with open(f"{basename}.png", "wb") as f:
+#    png_img.save(f)
 
-with open(basename + ".svg", "wb") as f:
+with open(f"{basename}.svg", "wb") as f:
     svg_img.save(f)
+
+# Convert SVG to EPS using Cairo
+cairosvg.svg2ps(url=f"{basename}.svg", write_to=f"{basename}.eps")
+cairosvg.svg2png(url=f"{basename}.svg", write_to=f"{basename}.png", scale=4)
