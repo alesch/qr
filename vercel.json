@@ -1,5 +1,5 @@
 {
   "redirects": [
-    { "source": "/a", "destination": "https://netflix.com", "permanent": false }
+    { "source": "/a", "destination": "https://alesch.github.io/memorial/", "permanent": false }
   ]
 }
