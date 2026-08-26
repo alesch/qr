@@ -1,5 +1,6 @@
 [tools]
 python = "3.12"
+vercel = "latest"
 
 [tasks.install]
 description = "Install dependencies from pyproject.toml"
